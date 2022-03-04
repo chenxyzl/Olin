@@ -1,0 +1,26 @@
+syntax = "proto3";
+package Message;
+
+// api服务器获取玩家的登录的key
+message AHPlayerLoginKeyAsk {// IRequest
+}
+message HAPlayerLoginKeyAns{// IResponse
+  string playerKey = 1;
+  string addr = 2;
+}
+
+// 玩家上线
+message HWPlayerOnlineAsk {// IRequest
+
+  uint64 worldId = 1;
+  uint64 uid = 2;
+  int64 loginTime = 3;
+}
+message WHPlayerOnlineAns {}// IResponse
+
+// 玩家下线
+message HWPlayerOfflineAsk {// IRequest
+  uint64 uid = 1;
+  int64 offlineTime = 2;
+}
+message WHPlayerOfflineAns {}  // IResponse

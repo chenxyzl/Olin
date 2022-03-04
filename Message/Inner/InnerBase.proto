@@ -1,0 +1,34 @@
+﻿syntax = "proto3";
+package Message;
+import "Code.proto";
+import "Common.proto";
+
+// 请求玩家的消息包装
+message RequestPlayer {// IRequestPlayer
+  uint32 opcode = 1;    // rpc opcode
+  uint64 sn = 2;        //流水号-用于断线重连/或者内部callback
+  uint64 playerId = 3;
+  bytes content = 4;    //消息内容
+}
+
+// 请求World的消息包装
+message RequestWorld {// IRequestWorld
+  uint32 opcode = 1;    // rpc opcode
+  uint64 sn = 2;        //流水号-用于断线重连/或者内部callback
+  uint64 worldId = 3; //
+  bytes content = 4;    //消息内容
+}
+
+//消息返回
+message InnerResponse {// IResponse
+  uint32 opcode = 1;     // rpc opcode
+  uint64 sn = 2;         //流水号--用于断线重连/或者内部callback
+  bytes content = 3;     //消息内容
+  Code code = 4;         //消息错误码
+}
+
+//actor线程恢复
+message ResumeActor {// IRequestPlayer
+  uint64 sn = 1;         //流水号--用于断线重连/或者内部callback
+  uint64 playerId = 2;
+}  

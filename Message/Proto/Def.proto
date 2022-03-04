@@ -1,0 +1,27 @@
+
+syntax = "proto3";
+package Message;
+
+enum ItemType {
+  currency = 0;  //货币
+  item = 1;      //道具
+  hero = 2;      //英雄
+  equip = 3;     //装备
+}
+
+enum CurrencyType {  // IMessage //货币类型
+  placeholder = 0;   //占位
+  gold = 1;          //金币
+  diamond = 2;       //钻石
+  exp = 3;           //玩家经验
+}
+
+//稀有度
+enum Rarity {
+  White = 0;
+  Green = 1;
+  Blue = 2;
+  Purple = 3;
+  Orange = 4;
+  Red = 5;
+}
