@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <BaseOutputPath>../../Bin</BaseOutputPath>
-        <StartupObject/>
+        <StartupObject />
     </PropertyGroup>
 
 
@@ -15,5 +15,23 @@
         <OutputPath>../../Bin/</OutputPath>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="DotNetty.Codecs.Http" Version="0.7.2" />
+        <PackageReference Include="DotNetty.Transport" Version="0.7.2" />
+        <PackageReference Include="DotNetty.Transport.Libuv" Version="0.7.2" />
+        <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.3.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Orleans.Core" Version="3.3.0" />
+        <PackageReference Include="Microsoft.Orleans.Runtime.Abstractions" Version="3.3.0" />
+        <PackageReference Include="Microsoft.Orleans.Transactions" Version="3.3.0" />
+        <PackageReference Include="NLog.Extensions.Logging" Version="1.6.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Interfaces\Interfaces.csproj" />
+    </ItemGroup>
 
 </Project>

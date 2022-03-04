@@ -1,0 +1,136 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Base.Alg;
+
+public class UnOrderMultiMap<T, K> where T : notnull
+{
+    private readonly Dictionary<T, List<K>> dictionary = new();
+
+    // 重用list
+    private readonly Queue<List<K>> queue = new();
+
+    public int Count => dictionary.Count;
+
+    /// <summary>
+    ///     返回内部的list
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public List<K>? this[T t]
+    {
+        get
+        {
+            dictionary.TryGetValue(t, out var list);
+            return list;
+        }
+    }
+
+    public Dictionary<T, List<K>> GetDictionary()
+    {
+        return dictionary;
+    }
+
+    public void Add(T t, K k)
+    {
+        dictionary.TryGetValue(t, out var list);
+        if (list == null)
+        {
+            list = FetchList();
+            dictionary[t] = list;
+        }
+
+        list.Add(k);
+    }
+
+    public KeyValuePair<T, List<K>> First()
+    {
+        return dictionary.First();
+    }
+
+    private List<K> FetchList()
+    {
+        if (queue.Count > 0)
+        {
+            var list = queue.Dequeue();
+            list.Clear();
+            return list;
+        }
+
+        return new List<K>();
+    }
+
+    private void RecycleList(List<K> list)
+    {
+        // 防止暴涨
+        if (queue.Count > 100) return;
+
+        list.Clear();
+        queue.Enqueue(list);
+    }
+
+    public bool Remove(T t, K k)
+    {
+        dictionary.TryGetValue(t, out var list);
+        if (list == null) return false;
+
+        if (!list.Remove(k)) return false;
+
+        if (list.Count == 0)
+        {
+            RecycleList(list);
+            dictionary.Remove(t);
+        }
+
+        return true;
+    }
+
+    public bool Remove(T t)
+    {
+        dictionary.TryGetValue(t, out var list);
+        if (list != null) RecycleList(list);
+
+        return dictionary.Remove(t);
+    }
+
+    /// <summary>
+    ///     不返回内部的list,copy一份出来
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public K[] GetAll(T t)
+    {
+        dictionary.TryGetValue(t, out var list);
+        if (list == null) return new K[0];
+
+        return list.ToArray();
+    }
+
+    public K? GetOne(T t)
+    {
+        dictionary.TryGetValue(t, out var list);
+        if (list != null && list.Count > 0) return list[0];
+
+        return default;
+    }
+
+    public bool Contains(T t, K k)
+    {
+        dictionary.TryGetValue(t, out var list);
+        if (list == null) return false;
+
+        return list.Contains(k);
+    }
+
+    public bool ContainsKey(T t)
+    {
+        return dictionary.ContainsKey(t);
+    }
+
+    public void Clear()
+    {
+        foreach (var keyValuePair in dictionary) RecycleList(keyValuePair.Value);
+
+        dictionary.Clear();
+    }
+}

@@ -4,7 +4,7 @@ import "Code.proto";
 import "Common.proto";
 
 // 客户端请求服务器的消息体
-message Request {// IRequest
+message GRequest {// IRequest
   uint32 opcode = 1;  // rpc opcode
   uint32 sn = 2;      //流水号-用于断线重连/或者内部callback
   bytes content = 3;  //消息内容
@@ -12,7 +12,7 @@ message Request {// IRequest
 }
 
 // 服务器返回客户端的消息体
-message Response {// IResponse
+message GResponse {// IResponse
   uint32 opcode = 1;  // rpc opcode
   uint32 sn = 2;      //流水号--用于断线重连/或者内部callback
   bytes content = 3;  //消息内容

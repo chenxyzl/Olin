@@ -3,7 +3,7 @@ using ProtoBuf;
 namespace Message;
 // 客户端请求服务器的消息体
 [ProtoContract]
-public partial class Request: IRequest
+public partial class GRequest: IRequest
 {
 	[ProtoMember(1)]
 	public uint Opcode { get; set; }
@@ -21,7 +21,7 @@ public partial class Request: IRequest
 
 // 服务器返回客户端的消息体
 [ProtoContract]
-public partial class Response: IResponse
+public partial class GResponse: IResponse
 {
 	[ProtoMember(1)]
 	public uint Opcode { get; set; }

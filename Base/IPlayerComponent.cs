@@ -1,0 +1,15 @@
+﻿using Base.State;
+
+namespace Base;
+
+public abstract class IPlayerComponent<T, NT> : IActorComponent<NT> where T : BaseState where NT : IBaseGrain
+{
+    //数据
+    public T? State = null!;
+
+    public IPlayerComponent(NT a) : base(a)
+    {
+    }
+
+    public Type GetStateType => typeof(T);
+}
