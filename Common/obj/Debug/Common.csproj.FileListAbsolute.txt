@@ -1,0 +1,12 @@
+/Users/lin/space/Olin/Bin/Common.deps.json
+/Users/lin/space/Olin/Bin/Common.dll
+/Users/lin/space/Olin/Bin/Common.pdb
+/Users/lin/space/Olin/Common/obj/Debug/Common.csproj.AssemblyReference.cache
+/Users/lin/space/Olin/Common/obj/Debug/Common.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lin/space/Olin/Common/obj/Debug/Common.AssemblyInfoInputs.cache
+/Users/lin/space/Olin/Common/obj/Debug/Common.AssemblyInfo.cs
+/Users/lin/space/Olin/Common/obj/Debug/Common.csproj.CoreCompileInputs.cache
+/Users/lin/space/Olin/Common/obj/Debug/Common.dll
+/Users/lin/space/Olin/Common/obj/Debug/refint/Common.dll
+/Users/lin/space/Olin/Common/obj/Debug/Common.pdb
+/Users/lin/space/Olin/Common/obj/Debug/ref/Common.dll

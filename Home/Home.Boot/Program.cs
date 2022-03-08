@@ -1,5 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System;
+using Base;
 
-Console.WriteLine("Hello, World!");
+namespace Home.Boot;
+
+class Program
+{
+    static async Task Main()
+    {
+        var a = new StartUp().Build();
+        await a.StartAsync();
+    }
+}

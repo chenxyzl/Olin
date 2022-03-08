@@ -1,0 +1,16 @@
+/Users/lin/space/Olin/Bin/Proto/Proto2CS
+/Users/lin/space/Olin/Bin/Proto/Proto2CS.deps.json
+/Users/lin/space/Olin/Bin/Proto/Proto2CS.runtimeconfig.json
+/Users/lin/space/Olin/Bin/Proto/Proto2CS.dll
+/Users/lin/space/Olin/Bin/Proto/Proto2CS.pdb
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/Proto2CS.csproj.AssemblyReference.cache
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/Proto2CS.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/Proto2CS.AssemblyInfoInputs.cache
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/Proto2CS.AssemblyInfo.cs
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/Proto2CS.csproj.CoreCompileInputs.cache
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/Proto2CS.csproj.CopyComplete
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/Proto2CS.dll
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/refint/Proto2CS.dll
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/Proto2CS.pdb
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/Proto2CS.genruntimeconfig.cache
+/Users/lin/space/Olin/Tools/Proto2CS/obj/Debug/ref/Proto2CS.dll

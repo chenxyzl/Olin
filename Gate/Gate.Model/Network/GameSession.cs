@@ -11,6 +11,7 @@ using DotNetty.Transport.Channels;
 using Interfaces.Home;
 using Interfaces.Login;
 using Message;
+using Orleans.Runtime;
 using IByteBuffer = MongoDB.Bson.IO.IByteBuffer;
 
 namespace Gate.Model.Network
@@ -24,14 +25,26 @@ namespace Gate.Model.Network
         //private readonly Guid _sessionId;
         private readonly IConfiguration _configuration;
 
-        private OutcomingPacketObserver _packetObserver;
-        private IPacketObserver _packetObserverRef;
+        private OutcomingPacketObserver? _packetObserver;
+        private IPacketObserver? _packetObserverRef;
         private IChannelHandlerContext _context;
-        private IPlayerGrain _user;
-        private IAccountGrain _accountGrain;
-        private bool _isInit;
+        private IPlayerGrain? _player;
 
-        private long _userId;
+        private long? _grainId;
+
+        private ulong PlayerId
+        {
+            get
+            {
+                if (_grainId != null)
+                {
+                    return (ulong) _grainId;
+                }
+
+                A.Abort("_playerId must not null");
+                return 0;
+            }
+        }
 
         //private string _token;
         private string _md5Key;
@@ -49,7 +62,10 @@ namespace Gate.Model.Network
 
         public async Task Disconnect()
         {
-            await _user.UnbindPacketObserver();
+            if (_player != null)
+            {
+                await _player.UnbindPacketObserver();
+            }
         }
 
         bool CheckSign(GRequest packet)
@@ -65,20 +81,26 @@ namespace Gate.Model.Network
                 //先验证token--避免被攻击
                 A.Ensure(CheckSign(packet), des: "first message must login", serious: true);
                 //同步初始化
-                if (!_isInit)
+                if (_player == null)
                 {
                     //第一条消息必须是登录--为了避免被攻击，直接断开
-                    A.Ensure(packet.Opcode == (int) OuterOpCode.Login, Code.Error, des: "first message must login",
+                    A.Ensure(packet.Opcode == OuterOpCode.Login.Int(), "first message must login",
                         serious: true);
 
+                    var login = SerializeHelper.FromBinary<C2SLogin>(packet.Content);
+                    _logger.Info($"player:{login.PlayerId} get login msg");
+
+                    _player = _client.GetGrain<IPlayerGrain>((long) login.PlayerId);
+
+
                     //处理登录
-                    _userId = packet.UserId;
+                    var grainId = A.NotNull((long) login.PlayerId);
+                    _grainId = grainId;
                     //_token = tokenInfo.Token;
                     _packetObserver = new OutcomingPacketObserver(this);
-                    _user = _client.GetGrain<IPlayerGrain>(_userId);
+                    _player = _client.GetGrain<IPlayerGrain>(grainId);
                     _packetObserverRef = _client.CreateObjectReference<IPacketObserver>(_packetObserver).Result;
-                    _user.BindPacketObserver(_packetObserverRef).Wait();
-                    _isInit = true;
+                    _player.BindPacketObserver(_packetObserverRef).Wait();
                     return;
                 }
 
@@ -94,22 +116,7 @@ namespace Gate.Model.Network
                     return;
                 }
 
-                //if (_userId != packet.UserId || _token != packet.Token)
-                //{
-                //    await DispatchOutcomingPacket(packet.ParseResult(MOErrorType.Hidden, "Token验证失败"));
-                //    await Close();
-                //    return;
-                //}
-                var tokenInfo = _accountGrain.GetToken().Result;
-                if (tokenInfo.Token != packet.Token ||
-                    tokenInfo.LastTime.AddSeconds(GameConstants.TOKENEXPIRE) < DateTime.Now)
-                {
-                    await DispatchOutcomingPacket(packet.ParseResult(MOErrorType.Hidden, "Token验证失败"));
-                    await Close();
-                    return;
-                }
-
-                await _router.SendPacket(packet);
+                // await _player.Tell() .SendPacket(packet);
 
                 //watch.Stop();
                 //Console.WriteLine($"{packet.UserId} {watch.ElapsedMilliseconds}ms");
@@ -124,7 +131,7 @@ namespace Gate.Model.Network
             }
         }
 
-        public async Task DispatchOutcomingPacket(GResponse packet)
+        public async Task DispatchOutcomingPacket(IMessage packet)
         {
             try
             {
@@ -158,14 +165,14 @@ namespace Gate.Model.Network
                 this.session = session;
             }
 
-            public async void Close(MOMsg packet = null)
+            public async void Close(IMessage? packet = null)
             {
                 if (packet != null)
                     await session.DispatchOutcomingPacket(packet);
                 await session.Close();
             }
 
-            public async void SendPacket(MOMsg packet)
+            public async void SendPacket(IMessage packet)
             {
                 await session.DispatchOutcomingPacket(packet);
             }

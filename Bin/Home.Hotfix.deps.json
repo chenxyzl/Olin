@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Home.Hotfix/1.0.0": {
+        "runtime": {
+          "Home.Hotfix.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Home.Hotfix/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "5oJtBp88xUdAGxf23dvA3NzMGGLzQY5vpcSC6UY4uMuFuUqRJbvAhtVmo/BqDQ6zcIVnk2fbFaPYCBhBn8eWJA==",
+  "success": true,
+  "projectFilePath": "/Users/lin/space/Olin/Message/Message.csproj",
+  "expectedPackageFiles": [
+    "/Users/lin/.nuget/packages/protobuf-net/3.0.101/protobuf-net.3.0.101.nupkg.sha512",
+    "/Users/lin/.nuget/packages/protobuf-net.core/3.0.101/protobuf-net.core.3.0.101.nupkg.sha512"
+  ],
+  "logs": []
+}

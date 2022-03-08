@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <BaseOutputPath>../../Bin</BaseOutputPath>
-        <StartupObject/>
+        <StartupObject />
     </PropertyGroup>
 
 
@@ -15,5 +15,15 @@
         <OutputPath>../../Bin/</OutputPath>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
+
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\Gate.Model\Gate.Model.csproj" />
+    </ItemGroup>
 
 </Project>

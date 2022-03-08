@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <BaseOutputPath>../../Bin</BaseOutputPath>
-        <StartupObject/>
+        <StartupObject />
     </PropertyGroup>
 
 
@@ -15,5 +15,10 @@
         <OutputPath>../../Bin/</OutputPath>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Base\Base.csproj" />
+    </ItemGroup>
 
 </Project>

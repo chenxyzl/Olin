@@ -19,8 +19,6 @@ public static class A
     //可预料的错误 会把错误码返回客户端
     public static T NotNull<T>(T? t, string? des = null, Code code = Code.Error, bool serious = false)
     {
-        if (t == null) throw new CodeException(code, des ?? code.ToString(), serious);
-
-        return t;
+        return t ?? throw new CodeException(code, des ?? $"{nameof(t)}: must not null", serious);
     }
 }

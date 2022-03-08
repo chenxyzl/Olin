@@ -1,0 +1,5 @@
+/Users/lin/space/Olin/Base/obj/Debug/Base.csproj.AssemblyReference.cache
+/Users/lin/space/Olin/Base/obj/Debug/Base.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lin/space/Olin/Base/obj/Debug/Base.AssemblyInfoInputs.cache
+/Users/lin/space/Olin/Base/obj/Debug/Base.AssemblyInfo.cs
+/Users/lin/space/Olin/Base/obj/Debug/Base.csproj.CoreCompileInputs.cache

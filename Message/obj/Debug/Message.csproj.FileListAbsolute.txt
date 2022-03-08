@@ -1,0 +1,12 @@
+/Users/lin/space/Olin/Bin/Message.deps.json
+/Users/lin/space/Olin/Bin/Message.dll
+/Users/lin/space/Olin/Bin/Message.pdb
+/Users/lin/space/Olin/Message/obj/Debug/Message.csproj.AssemblyReference.cache
+/Users/lin/space/Olin/Message/obj/Debug/Message.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lin/space/Olin/Message/obj/Debug/Message.AssemblyInfoInputs.cache
+/Users/lin/space/Olin/Message/obj/Debug/Message.AssemblyInfo.cs
+/Users/lin/space/Olin/Message/obj/Debug/Message.csproj.CoreCompileInputs.cache
+/Users/lin/space/Olin/Message/obj/Debug/Message.dll
+/Users/lin/space/Olin/Message/obj/Debug/refint/Message.dll
+/Users/lin/space/Olin/Message/obj/Debug/Message.pdb
+/Users/lin/space/Olin/Message/obj/Debug/ref/Message.dll

@@ -1,0 +1,12 @@
+/Users/lin/space/Olin/Bin/ExcelMapper.deps.json
+/Users/lin/space/Olin/Bin/ExcelMapper.dll
+/Users/lin/space/Olin/Bin/ExcelMapper.pdb
+/Users/lin/space/Olin/Third/ExcelMapper/obj/Debug/ExcelMapper.csproj.AssemblyReference.cache
+/Users/lin/space/Olin/Third/ExcelMapper/obj/Debug/ExcelMapper.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lin/space/Olin/Third/ExcelMapper/obj/Debug/ExcelMapper.AssemblyInfoInputs.cache
+/Users/lin/space/Olin/Third/ExcelMapper/obj/Debug/ExcelMapper.AssemblyInfo.cs
+/Users/lin/space/Olin/Third/ExcelMapper/obj/Debug/ExcelMapper.csproj.CoreCompileInputs.cache
+/Users/lin/space/Olin/Third/ExcelMapper/obj/Debug/ExcelMapper.dll
+/Users/lin/space/Olin/Third/ExcelMapper/obj/Debug/refint/ExcelMapper.dll
+/Users/lin/space/Olin/Third/ExcelMapper/obj/Debug/ExcelMapper.pdb
+/Users/lin/space/Olin/Third/ExcelMapper/obj/Debug/ref/ExcelMapper.dll
